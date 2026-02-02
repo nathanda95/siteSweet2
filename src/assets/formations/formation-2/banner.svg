@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" fill="none">
+  <defs>
+    <linearGradient id="g21" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1323"/>
+      <stop offset="100%" stop-color="#0b1f3a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="420" fill="url(#g21)"/>
+  <rect x="80" y="80" width="1040" height="260" rx="26" stroke="#1f4f92" stroke-width="3" fill="rgba(255,255,255,0.02)"/>
+  <rect x="120" y="120" width="280" height="180" rx="18" fill="#0f2b55" stroke="#d7b670" stroke-width="3"/>
+  <path d="M160 240h140" stroke="#d7b670" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="180" cy="160" r="26" fill="#d7b670"/>
+  <circle cx="280" cy="160" r="26" fill="#d7b670" opacity="0.6"/>
+  <text x="480" y="180" fill="#f5f7fb" font-family="Oswald, sans-serif" font-size="42" font-weight="700">Conduite d’urgence</text>
+  <text x="480" y="225" fill="#9fb5d8" font-family="Inter, sans-serif" font-size="20">Pilotage haute vitesse • Sécurité routière</text>
+  <text x="1020" y="210" text-anchor="middle" fill="#d7b670" font-family="Inter, sans-serif" font-size="34" font-weight="700">02</text>
+</svg>

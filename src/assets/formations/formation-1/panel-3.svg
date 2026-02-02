@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" fill="none">
+  <defs>
+    <linearGradient id="p3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0c1526"/>
+      <stop offset="100%" stop-color="#0f1f3a"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="360" rx="18" fill="url(#p3)"/>
+  <rect x="24" y="24" width="672" height="312" rx="18" stroke="#d7b670" stroke-width="2" fill="rgba(255,255,255,0.02)"/>
+  <rect x="70" y="80" width="260" height="200" rx="14" fill="#102847" stroke="#1f4f92" stroke-width="2"/>
+  <rect x="390" y="80" width="260" height="200" rx="14" fill="#0f223d" stroke="#1f4f92" stroke-width="2"/>
+  <line x1="330" y1="180" x2="390" y2="180" stroke="#d7b670" stroke-width="6" stroke-linecap="round"/>
+  <text x="200" y="175" text-anchor="middle" fill="#f2f4f7" font-family="Inter, sans-serif" font-size="22" font-weight="700">Verbaliser</text>
+  <text x="200" y="205" text-anchor="middle" fill="#9fb5d8" font-family="Inter, sans-serif" font-size="14">Annonce claire</text>
+  <text x="520" y="175" text-anchor="middle" fill="#f2f4f7" font-family="Inter, sans-serif" font-size="22" font-weight="700">Couverture</text>
+  <text x="520" y="205" text-anchor="middle" fill="#9fb5d8" font-family="Inter, sans-serif" font-size="14">Angle 45°</text>
+</svg>

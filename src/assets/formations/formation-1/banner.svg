@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1729"/>
+      <stop offset="100%" stop-color="#0a1020"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#123b7a"/>
+      <stop offset="100%" stop-color="#1b5ba8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="420" fill="url(#g1)"/>
+  <rect x="60" y="70" width="1080" height="280" rx="22" stroke="#d7b670" stroke-width="3" fill="rgba(255,255,255,0.02)"/>
+  <path d="M80 110h220l50 70-50 70H80z" fill="url(#g2)" opacity="0.8"/>
+  <circle cx="170" cy="180" r="58" fill="#0a1a33" stroke="#d7b670" stroke-width="4"/>
+  <text x="170" y="190" text-anchor="middle" fill="#d7b670" font-size="44" font-family="Inter, sans-serif" font-weight="700">01</text>
+  <text x="330" y="180" fill="#f5f7fb" font-size="42" font-family="Oswald, sans-serif" font-weight="700">Intervention urbaine</text>
+  <text x="330" y="225" fill="#9fb5d8" font-size="20" font-family="Inter, sans-serif">Cadre tactique • Sécurité • Progression</text>
+  <line x1="330" y1="250" x2="1030" y2="250" stroke="#1f4f92" stroke-width="2" opacity="0.7"/>
+  <text x="330" y="290" fill="#d7b670" font-size="18" font-family="Inter, sans-serif" letter-spacing="4">BCSO TRAINING DIVISION</text>
+</svg>

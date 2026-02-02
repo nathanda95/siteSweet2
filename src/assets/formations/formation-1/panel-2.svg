@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" fill="none">
+  <defs>
+    <linearGradient id="p2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c1b30"/>
+      <stop offset="100%" stop-color="#112a4d"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="360" rx="18" fill="url(#p2)"/>
+  <rect x="26" y="26" width="668" height="308" rx="16" stroke="#4b6cae" stroke-width="2" fill="rgba(255,255,255,0.02)"/>
+  <polyline points="90,240 200,150 310,210 420,140 540,190 640,120" fill="none" stroke="#d7b670" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="200" cy="150" r="14" fill="#d7b670"/>
+  <circle cx="420" cy="140" r="14" fill="#d7b670"/>
+  <circle cx="640" cy="120" r="14" fill="#d7b670"/>
+  <text x="60" y="80" fill="#f5f7fb" font-family="Inter, sans-serif" font-size="22" font-weight="700">Angles & points hauts</text>
+  <text x="60" y="110" fill="#9fb5d8" font-family="Inter, sans-serif" font-size="15">Repérage avant engagement</text>
+</svg>

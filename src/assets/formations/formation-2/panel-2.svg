@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" fill="none">
+  <defs>
+    <linearGradient id="p22" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c1529"/>
+      <stop offset="100%" stop-color="#0d2140"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="360" rx="18" fill="url(#p22)"/>
+  <rect x="30" y="30" width="660" height="300" rx="18" stroke="#4b6cae" stroke-width="2" fill="rgba(255,255,255,0.02)"/>
+  <polyline points="80,220 170,170 260,220 350,160 440,210 530,140 620,190" fill="none" stroke="#d7b670" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="60" y="80" fill="#f2f4f7" font-family="Inter, sans-serif" font-size="22" font-weight="700">Trajectoire sécurisée</text>
+  <text x="60" y="110" fill="#9fb5d8" font-family="Inter, sans-serif" font-size="15">Entrée large • Corde tardive • Sortie ouverte</text>
+</svg>

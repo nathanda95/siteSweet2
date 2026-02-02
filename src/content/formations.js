@@ -1,0 +1,968 @@
+const img = (path) => new URL(`../assets/${path}`, import.meta.url).href
+import f01banner from "../assets/formations/formation-1/formation-1-bannière.png"
+import f01zone from "../assets/formations/formation-1/formation-1-zone.png"
+import f01controle1 from "../assets/formations/formation-1/formation-1-controle1.png"
+import f01controle2 from "../assets/formations/formation-1/formation-1-controle2.png"
+import f01controle3 from "../assets/formations/formation-1/formation-1-controle3.png"
+import f01controle4 from "../assets/formations/formation-1/formation-1-controle4.png"
+
+export const formations = [
+  {
+    id: '1',
+    title: 'Formation 01 — Aborder un objectif à pied',
+    subtitle: 'Contrôle d’identité, zones de sécurité et palpation',
+    banner: f01banner,
+    sections: [
+      {
+        title: 'But de la séance',
+        paragraphs: [
+          {
+            text: `Consiste à mettre en place un dispositif en vue d’effectuer le contrôle d’un individu,
+            de s’enquérir de son identité et d’être en mesure de le maîtriser physiquement.`,
+          },
+        ],
+      },
+      {
+        title: 'I. Les différentes zones de sécurité',
+        paragraphs: [
+          {
+            text: `Lors d’un contrôle, les agents de police se doivent de différencier les zones
+            et distances à avoir avec la personne contrôlée afin de travailler en toute sécurité.`,
+          },
+          {
+            text: `Schéma des zones de sécurité.`,
+            image: f01zone,
+          },
+          {
+            text: `Zones d’engagement (détails par zone) :`,
+            tabs: [
+              {
+                title: 'ZO : Zone observation',
+                text:
+                  'Dans cette zone les policiers peuvent rompre le contact sans prendre de risque.',
+                list: ['Visuel', 'Verbal', 'Auditif', 'Olfactif'],
+              },
+              {
+                title: 'ZCP : Zone de contact physique',
+                text:
+                  'Zone délimitée par la portée d’un coup d’arrêt à l’adversaire avec les mains, les pieds ou un moyen intermédiaire, sans déplacer ses appuis.',
+              },
+              {
+                title: 'ZI : Zone intime',
+                text:
+                  'Zone proche à partir de laquelle l’adversaire peut être saisi à bras le corps. Un coup d’arrêt peut lui être porté avec le coude ou le genou.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'II. Les placements lors des contrôles',
+        paragraphs: [
+          {
+            text: `Le placement en triangulation simple s’applique lors d’un contrôle à deux policiers.
+            Le policier contrôleur et le policier appui se placent en triangle avec la personne contrôlée.`,
+          },
+          {
+            text: `Le terme “triangulation” est utilisé car le placement du policier contrôleur
+            et du policier appui sont placés en forme de triangle avec la personne contrôlée.`,
+            image: f01controle1,
+          },
+          {
+            text: `L’appui doit être placé de façon à voir le dos de l’adversaire sans être vu de lui.`,
+            image: f01controle2,
+          },
+          {
+            text: `Objectif : conserver une capacité de réaction rapide. Rôle du contrôleur :`,
+            list: [
+              'Demander poliment une pièce d’identité en vouvoyant la personne.',
+              'Rester dans la zone de contact et maintenir la distance.',
+              'Rester vigilant lors de la disparition et la sortie des mains.',
+              'Document en main, reculer légèrement pour procéder à la vérification.',
+            ],
+          },
+          {
+            text: `Rôle de l’appui :`,
+            list: [
+              'Rester vigilant lors de la disparition et la sortie des mains.',
+              'Rester prêt à intervenir au profit du contrôleur.',
+              'Gérer l’environnement en prenant en compte la couverture.',
+            ],
+          },
+          {
+            text: `Le placement en triangulation double s’applique lors d’un contrôle à trois policiers.
+            Le troisième policier prend la mission de couverture en zone d’observation. Il se réserve
+            la possibilité de renforcer le contrôle au besoin et de prévenir l’arrivée d’éléments perturbateurs.`,
+            image: f01controle3,
+          },
+        ],
+      },
+      {
+        title: 'III. Arrestation d’un individu — palpation de sécurité',
+        paragraphs: [
+          {
+            text: `Quelle est la différence entre une palpation et une fouille ? Il s’agit exclusivement
+            d’une mesure administrative, de sûreté, et dont la finalité est de vérifier qu’une personne contrôlée
+            n’est pas porteuse d’un objet dangereux pour elle-même ou pour autrui.`,
+          },
+          {
+            text: `La palpation de sécurité doit être pratiquée de même sexe (si possible) et à l’abri du regard
+            du public, chaque fois que possible.`,
+          },
+          {
+            text: `Exemple de mise en œuvre : troubles à l’ordre public, contrôle d’identité, ivresse publique et manifeste,
+            conduite sous l’emprise d’un état alcoolique, vérification d’identité, transport d’une personne dans un véhicule de dotation.`,
+          },
+          {
+            text: `La palpation doit être réalisée sous appui, de manière complète, méthodique et minutieuse,
+            sans agressivité ni violence.`,
+          },
+          {
+            text: `Procéder aux injonctions : “Monsieur, madame, nous allons procéder à une palpation de sécurité.”`,
+            list: [
+              'Rester en zone d’observation.',
+              'Pratiquer la palpation avec l’extrémité des doigts sur les vêtements.',
+            ],
+            image: f01controle4,
+          },
+        ],
+      },
+      {
+        title: 'IV. Arrestation d’un individu — appui et sécurisation',
+        paragraphs: [
+          {
+            text: `Une palpation simple sans arrestation préalable nécessite que l’appui sorte le taser (ou PIE) tenu en main.
+            Si la palpation résulte d’une arrestation, l’appui prendra le taser en main et pointera l’individu.`,
+          },
+          {
+            text: `Une fois avoir effectué les injonctions, un policier va prendre le rôle du contrôle et procéder à la palpation,
+            tandis que l’autre policier le rôle de l’appui à la perpendiculaire.`,
+          },
+          {
+            text: `Il est préférable de procéder à une palpation contre un véhicule ou un mur. Le placement à la perpendiculaire
+            reprend la triangulation. Cela permet d’éviter un tir croisé et de retirer à l’individu une ouverture pour prendre la fuite.`,
+          },
+          {
+            text: `Il est important que le contrôleur communique avec son coéquipier et l’individu contrôlé.`,
+            list: [
+              '“Monsieur, vous allez vous mettre contre le mur s’il vous plaît.”',
+              '“Je procède à la palpation.”',
+              '“Monsieur, vous avez quoi dans cette poche ?”',
+              '“Palpation terminée, je menotte.”',
+              '“Menottage effectué !”',
+            ],
+          },
+          {
+            text: `Avez-vous des questions ? Pour instructeur : faire quelques mises en situation pour voir si la formation est acquise.`,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: '2',
+    title: 'Formation 02 — Aborder un objectif en véhicule',
+    subtitle: 'Communication, placement et arrestation en contrôle routier',
+    banner: null,
+    sections: [
+      {
+        title: 'Introduction',
+        paragraphs: [
+          {
+            text: `Cette formation couvre les procédures de communication, de placement et d’arrestation
+            d’individus à bord d’un véhicule, qu’il s’agisse d’un contrôle simple ou d’une situation
+            à haut risque (refus d’obtempérer).`,
+          },
+        ],
+      },
+      {
+        title: 'I. Communication & objectifs',
+        paragraphs: [
+          {
+            text: `La maîtrise de la communication est la clé de la sécurité et de l’autorité.`,
+          },
+          {
+            text: `Compte-rendu radio — Obligation : quel que soit le type de contrôle (fixe ou suite à une intervention),
+            un compte-rendu de début et de fin doit être transmis à la Centrale.`,
+          },
+          {
+            text: `Compte-rendu radio — Importance : cette formalité est cruciale pour assurer la sécurité des agents
+            en cas d’incident ou d’agression.`,
+          },
+          {
+            text: `Interaction verbale — Posture : la communication avec les personnes contrôlées doit être
+            parfaitement maîtrisée.`,
+          },
+          {
+            text: `Interaction verbale — Ton : une voix ferme, des ordres clairs et des injonctions correctes
+            permettent d’asseoir l’autorité et d’afficher un professionnalisme avéré.`,
+          },
+          {
+            text: `Interaction verbale — Résultat : cela assure une meilleure exécution des ordres par les usagers.`,
+          },
+        ],
+      },
+      {
+        title: 'II. Le placement du véhicule (contrôle standard)',
+        paragraphs: [
+          {
+            text: `Le positionnement de votre véhicule de patrouille est votre première protection.`,
+          },
+          {
+            table: {
+              headers: ['Élément', 'Détail'],
+              rows: [
+                [
+                  'Placement en biais — configuration',
+                  'Si vous êtes seul à interpeller, favorisez un placement en biais derrière le véhicule cible.',
+                ],
+                [
+                  'Placement en biais — objectif',
+                  'Ce placement crée un “couloir de sécurité” protégeant l’agent du trafic lors du contrôle.',
+                ],
+                [
+                  'Procédure d’approche — rôle du passager',
+                  'C’est lui qui effectue les sommations et donne les ordres.',
+                ],
+                [
+                  'Consignes aux occupants',
+                  'Inviter le conducteur à couper le moteur, mettre les clés sur le toit ou sur le tableau de bord et garder les mains visibles.',
+                ],
+                [
+                  'Injonction type',
+                  '“LSPD, coupez le moteur, retirez les clés du contact et mettez-les sur le toit. Gardez vos mains visibles.”',
+                ],
+              ],
+            },
+            image: null,
+          },
+        ],
+      },
+      {
+        title: 'III. Arrestation à haut risque (refus d’obtempérer)',
+        paragraphs: [
+          {
+            text: `Suite à un refus d’obtempérer, l’individu est considéré comme dangereux.
+            La procédure change radicalement.`,
+            image: null,
+          },
+          {
+            text: `Formation “rideau” — Armement : sortie de l’arme létale pour contrôler en sécurité.`,
+          },
+          {
+            text: `Formation “rideau” — Couverture : les policiers forment un rideau en se plaçant à couvert
+            derrière leurs portières blindées ouvertes.`,
+          },
+          {
+            text: `Formation “rideau” — Sécurité conducteur : le conducteur de la patrouilleuse reste initialement
+            à bord pour pouvoir repartir immédiatement si le suspect reprend la fuite.`,
+          },
+          {
+            text: `Protocole d’extraction “un par un” : les suspects ne doivent jamais sortir tous en même temps.
+            L’ordre d’interpellation doit être respecté pour éviter tout danger.`,
+          },
+          {
+            text: `Injonctions (mégaphone) : “Conducteur, sortez du véhicule, les mains en l’air !”`,
+          },
+          {
+            text: `Mise au sol / contrôle : ordre “Avancez vers nous, tournez sur vous-même en levant votre pull”
+            (vérification ceinture). L’unité A va menotter le suspect, l’amener au véhicule de police
+            et effectuer la palpation.`,
+          },
+          {
+            text: `Rotation (le switch) : l’unité B s’occupe du passager suivant uniquement une fois le premier
+            individu sécurisé. Si nécessaire (manque de menottes), les rôles s’échangent.`,
+          },
+          {
+            text: `Gestion multi-suspects : si plus de deux suspects sont présents, il est impératif de demander
+            une seconde patrouille en renfort. Les policiers tiennent les suspects en joue jusqu’à l’arrivée
+            des renforts.`,
+          },
+          {
+            text: `Sécurisation finale : une fois tous les suspects dans le véhicule de police, les deux policiers
+            s’approchent du véhicule cible sous appui mutuel, ouvrent et fouillent le coffre, puis relèvent
+            la plaque pour vérification fichier et rapport.`,
+          },
+        ],
+      },
+      {
+        title: 'IV. Procédures post-arrestation',
+        paragraphs: [
+          {
+            text: `Transport & communication — Code radio : annoncez à la centrale que les suspects sont interpellés.
+            Exemple : “Centrale de 5 ADAM 1 ; 2 suspects interpellés, 10-15 PDS Sandy Shores”.`,
+          },
+          {
+            text: `Transport & communication — Droits Miranda : la lecture des droits n’est nécessaire qu’en cas
+            d’interrogatoire.`,
+          },
+          {
+            text: `Traitement au poste : encoder le suspect (si inconnu), rédiger le rapport d’arrestation,
+            contacter Avocat / Procureur / Médecin si besoin, procéder à la verbalisation.`,
+          },
+          {
+            text: `Exercice pratique (note instructeur) : placer un véhicule au centre, la patrouille doit tourner
+            autour et effectuer un arrêt au “Top Radio”, adaptant son placement et sa procédure selon l’angle d’arrêt.`,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: '3',
+    title: 'Formation 03 — Course poursuite & radio',
+    subtitle: 'Règles d’engagement et communication radio standardisée',
+    banner: null,
+    sections: [
+      {
+        title: 'Introduction',
+        paragraphs: [
+          {
+            text: `Cette formation est capitale. Elle définit les règles d’engagement lors des courses‑poursuites
+            et standardise la communication radio pour assurer la coordination des unités.`,
+            image: null,
+          },
+        ],
+      },
+      {
+        title: 'I. Philosophie & sécurité',
+        paragraphs: [
+          {
+            text: `La règle d’or d’une course‑poursuite est la sécurité (du suspect, des citoyens et des agents).`,
+          },
+          {
+            text: `Principe de précaution : ne mettez jamais en péril la vie de citoyens pour une simple infraction routière.
+            Si la poursuite devient trop dangereuse, relevez la plaque, notez la description du véhicule/suspects et abandonnez.`,
+          },
+          {
+            text: `Seul un haut gradé ou la centrale peut ordonner l’arrêt d’une poursuite, mais l’agent peut décider
+            de l’abandonner de lui‑même par sécurité.`,
+          },
+        ],
+      },
+      {
+        title: 'II. Les niveaux de poursuite (alertes)',
+        paragraphs: [
+          {
+            text: `La réponse policière doit être proportionnelle à la menace.`,
+          },
+          {
+            table: {
+              headers: ['Niveau', 'Description', 'Renforts autorisés'],
+              rows: [
+                [
+                  'Niveau 1',
+                  'Refus d’obtempérer simple. Pas d’infraction grave, vitesse modérée.',
+                  '2 véhicules max',
+                ],
+                [
+                  'Niveau 2',
+                  'Poursuite > 7 min + conduite dangereuse (contresens, +150 km/h, percute mobilier).',
+                  '3 véhicules max (la dernière unité anticipe les intersections)',
+                ],
+                [
+                  'Niveau 3',
+                  'Tentative de blocage par des complices extérieurs.',
+                  '1 unité par véhicule complice en plus du convoi principal',
+                ],
+                [
+                  'Niveau 4',
+                  'Danger de mort immédiat : tir, percuter une personne, vol d’un véhicule de police, contresens autoroute > 2 km.',
+                  'Pas de limite d’unités',
+                ],
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'III. La manœuvre du P.I.T.',
+        paragraphs: [
+          {
+            text: `Le P.I.T. (Pursuit Intervention Technique) consiste à percuter l’arrière latéral du véhicule fuyard
+            pour le faire partir en tête‑à‑queue. C’est une mesure de dernier recours.`,
+            image: null,
+          },
+          {
+            text: `Check‑list obligatoire pour PIT : niveau 2 minimum, 3 sommations au mégaphone (intervalle 10s),
+            poursuite active depuis au moins 10 minutes, conduite dangereuse, zone dégagée sans piétons,
+            vitesse inférieure à 100 km/h, présence d’au moins une patrouille en back‑up.`,
+          },
+          {
+            text: `Autorisation : le PIT ne s’effectue que sur ordre d’un supérieur ou de la Centrale.
+            Exécution : un seul véhicule effectue la manœuvre (celui collé au suspect).`,
+          },
+        ],
+      },
+      {
+        title: 'IV. Communication radio : les bases',
+        paragraphs: [
+          {
+            text: `La radio est votre lien de vie. La communication doit être brève, claire et précise.`,
+          },
+          {
+            text: `Prise de service (10‑8) : mettre à jour son statut sur le MDT, puis annoncer vocalement à la centrale.
+            Modèle : “[Destinataire] de [Émetteur], [Code]”. Exemple : “Centrale de 11, 10‑8.”`,
+          },
+          {
+            table: {
+              headers: ['Indicatif', 'Type d’unité'],
+              rows: [
+                ['LINCOLN (L)', 'Agent seul'],
+                ['ADAM (A)', 'Deux agents (Duo standard)'],
+                ['TANGO (T)', 'Trois agents'],
+                ['X‑RAY', 'Voiture pleine (4 agents)'],
+                ['MARY (M)', 'Moto (Motorcycle)'],
+                ['WILLIAM (W)', 'Unité Traffic Division (TED)'],
+                ['DAVID (D)', 'SWAT / Métro / ERT'],
+                ['SAM (S) / INDIA (I)', 'Unmarked / Enquête'],
+                ['K9', 'Unité canine'],
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'V. Liste des codes 10 (Ten‑Codes)',
+        paragraphs: [
+          {
+            text: `Voici la liste officielle des codes radio à utiliser en service.`,
+            list: [
+              { code: '10-1', label: 'Mauvaise réception radio / Radio défectueuse' },
+              { code: '10-2', label: 'Signal clair' },
+              { code: '10-3', label: 'Fin de transmission' },
+              { code: '10-4', label: 'Affirmatif' },
+              { code: '10-5', label: 'Négatif' },
+              { code: '10-6', label: 'Occupé (sauf urgence)' },
+              { code: '10-7', label: 'Hors service temporaire / Indisponible' },
+              { code: '10-8', label: 'Prise de service' },
+              { code: '10-9', label: 'Répéter le dernier message radio' },
+              { code: '10-10', label: 'Fin de service' },
+              { code: '10-14', label: 'Escorte ou Convoi' },
+              { code: '10-15', label: 'Transport d’un prisonnier' },
+              { code: '10-17', label: 'Entretien véhicule (Essence/Réparation)' },
+              { code: '10-19', label: 'En route vers (préciser la localisation)' },
+              { code: '10-20', label: 'Votre localisation ?' },
+              { code: '10-22', label: 'Annuler ou ignorer le dernier message' },
+              { code: '10-23', label: 'Standby / En attente de dispatch' },
+              { code: '10-27', label: 'Vérifiez le permis du conducteur' },
+              { code: '10-28', label: 'Vérification de l’immatriculation' },
+              { code: '10-29', label: 'Individu recherché' },
+              { code: '10-30', label: 'Bagarre ou Rixe' },
+              { code: '10-31', label: 'Tirs d’armes à feu' },
+              { code: '10-35', label: 'Demande de renfort sur ma position' },
+              { code: '10-36', label: 'Poste de contrôle routier en cours' },
+              { code: '10-37', label: 'Braquage de Train' },
+              { code: '10-38', label: 'Braquage d’ATM' },
+              { code: '10-40', label: 'Braquage de Supérette' },
+              { code: '10-41', label: 'Début de patrouille' },
+              { code: '10-42', label: 'Fin de patrouille' },
+              { code: '10-45', label: 'Demande d’informations' },
+              { code: '10-48', label: 'Contrôle routier' },
+              { code: '10-50', label: 'Accident de la route' },
+              { code: '10-51', label: 'Demande dépanneuse' },
+              { code: '10-52', label: 'Demande ambulance' },
+              { code: '10-56', label: 'Refus d’obtempérer' },
+              { code: '10-57', label: 'Délit de fuite' },
+              { code: '10-58', label: 'Course poursuite' },
+              { code: '10-59', label: 'Vol de véhicule' },
+              { code: '10-60', label: 'Vente de drogue' },
+              { code: '10-91', label: 'Braquage de Banque' },
+              { code: '10-92', label: 'Braquage de Bijouterie' },
+              { code: '10-93', label: 'Prise d’otage' },
+              { code: '10-99', label: 'Officier en danger – besoin de toutes les unités' },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'VI. Gestion de poursuite (le convoi)',
+        paragraphs: [
+          {
+            text: `Véhicule de tête (Lead) — conducteur (Alpha) : se concentre à 100% sur la conduite, ne parle pas à la radio.
+            Passager (Bravo) : gère toute la communication radio.`,
+          },
+          {
+            text: `Annonce type : “10‑56, [Description Véhicule], [Nombre Occupants], [Direction], [Code Dangerosité]”.
+            Exemple : “Centrale de 5 ADAM 7, 10‑56 Sultan noire, occupé 2 fois, direction Parking Central, Code 4.”`,
+          },
+          {
+            text: `Véhicules suivants : se placent en file indienne derrière le leader, interdiction de dépasser
+            (sauf si le leader se crash ou abandonne), annoncent les obstacles ou dangers, et si le véhicule
+            de tête a un accident, le second reprend immédiatement le lead et la radio.`,
+          },
+          {
+            text: `Alphabet OTAN : utilisé pour épeler les plaques ou les noms.`,
+            table: {
+              headers: ['Lettre', 'Code OTAN'],
+              rows: [
+                ['A', 'Alpha'],
+                ['B', 'Bravo'],
+                ['C', 'Charlie'],
+                ['D', 'Delta'],
+                ['E', 'Echo'],
+                ['F', 'Foxtrot'],
+                ['G', 'Golf'],
+                ['H', 'Hotel'],
+                ['I', 'India'],
+                ['J', 'Juliett'],
+                ['K', 'Kilo'],
+                ['L', 'Lima'],
+                ['M', 'Mike'],
+                ['N', 'November'],
+                ['O', 'Oscar'],
+                ['P', 'Papa'],
+                ['Q', 'Quebec'],
+                ['R', 'Romeo'],
+                ['S', 'Sierra'],
+                ['T', 'Tango'],
+                ['U', 'Uniform'],
+                ['V', 'Victor'],
+                ['W', 'Whiskey'],
+                ['X', 'X‑ray'],
+                ['Y', 'Yankee'],
+                ['Z', 'Zulu'],
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: '4',
+    title: 'Formation 04 — Armement & tir',
+    subtitle: 'Sécurité, cadre légal et arsenal opérationnel',
+    banner: null,
+    sections: [
+      {
+        title: 'Introduction',
+        paragraphs: [
+          {
+            text: `Cette formation couvre les règles de sécurité, le cadre légal de l’usage des armes
+            et la présentation de l’arsenal.`,
+            image: null,
+          },
+        ],
+      },
+      {
+        title: 'I. Règles de sécurité fondamentales',
+        paragraphs: [
+          {
+            text: `Avant de toucher une arme, tout officier doit connaître ces règles par cœur.`,
+          },
+          {
+            text: `Les 5 commandements de sécurité :`,
+            list: [
+              'Arme toujours chargée : considérez toujours qu’une arme est chargée, même si vous pensez le contraire.',
+              'Manipulation exclusive : si vous avez une arme en main, vous ne faites rien d’autre (pas de conduite, pas de fouille, pas de radio).',
+              'Discipline du canon : ne pointez votre arme que vers une menace identifiée. Le canon ne doit jamais balayer un collègue ou un civil.',
+              'Discipline de l’index : le doigt reste sur le pontet (hors de la détente) tant que la décision de tirer n’est pas prise.',
+              'Vérifications : toujours être sûr de son environnement.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'II. Intervention graduée & cadre légal',
+        paragraphs: [
+          {
+            text: `L’usage de la force doit toujours être proportionné à la menace.`,
+          },
+          {
+            text: `Échelle de la force :`,
+            list: [
+              'Présence / dialogue : uniforme, injonctions verbales.',
+              'Contrôle physique : mains nues, menottage.',
+              'Force intermédiaire (MFI/AFI) : matraque, taser, gaz (face à une batte ou arme blanche non létale).',
+              'Force létale : arme à feu (face à un danger de mort immédiat).',
+            ],
+          },
+          {
+            text: `Quand tirer ? (Légitime défense & police) — l’usage de l’arme létale est autorisé si :`,
+            list: [
+              'Menace immédiate : individu armé (arme blanche/feu) menaçant votre vie ou celle d’autrui.',
+              'Règle des 6,5 mètres : si un individu armé d’une arme blanche se trouve à moins de 6,5 m et se montre menaçant → tir autorisé sans sommation.',
+              'Sommations : au-delà de cette distance, 2 sommations orales sont requises.',
+              'Véhicule bélier : si le véhicule met en danger de mort des agents ou civils.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'III. Procédure de tir (C.E.V.I.T.A.L)',
+        paragraphs: [
+          {
+            text: `L’acronyme CEVITAL résume l’action de tir au combat (ISTC) :`,
+            table: {
+              headers: ['Lettre', 'Action'],
+              rows: [
+                ['C', 'Certitude d’identification (cible hostile confirmée).'],
+                ['E', 'Élévation (monter l’arme au niveau des yeux).'],
+                ['V', 'Visée (alignement guidon/cran de mire).'],
+                ['I', 'Index (le doigt se pose sur la détente).'],
+                ['T', 'Tir (pression continue).'],
+                ['A', 'Analyse (scan de la cible : est‑elle neutralisée ?).'],
+                ['L', 'Latérale (scan de l’environnement : y a‑t‑il d’autres menaces ?).'],
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'IV. Le taser (X26)',
+        paragraphs: [
+          {
+            text: `Le pistolet à impulsion électrique (PIE) est une arme non létale permettant
+            la neutralisation neuromusculaire.`,
+          },
+          {
+            text: `Caractéristiques :`,
+            list: [
+              'Portée : maximum 6,5 mètres.',
+              'Port : dans un étui (holster) à l’opposé de l’arme à feu pour éviter la confusion.',
+              'Mode d’emploi : crier “TASER ! Attention TASER !” avant le tir. Ne pas viser la tête.',
+            ],
+          },
+          {
+            text: `Interdictions strictes :`,
+            list: [
+              'Femmes enceintes, personnes âgées, cardiaques.',
+              'Personnes imprégnées de liquides inflammables (essence, alcool fort).',
+              'Conducteur moteur tournant (risque d’accident incontrôlé).',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'V. L’arsenal des forces de l’ordre sur l’État de San Andreas',
+        paragraphs: [
+          {
+            text: `Pistolet GLOCK (arme de service) :`,
+            list: [
+              'Type : semi‑automatique.',
+              'Calibre : 9x19mm Parabellum.',
+              'Capacité : 12 cartouches (+1 chambre).',
+              'Portée efficace : 25 à 50 mètres.',
+              'Sécurité : pas de cran de sûreté manuel, la sécurité est sur la détente.',
+            ],
+          },
+          {
+            text: `HK MP5 (appui tactique) :`,
+            list: [
+              'Type : pistolet‑mitrailleur.',
+              'Usage : sortie sur ordre (Superviseur/Defcon) ou danger réel prévisible.',
+              'Capacité : 25 cartouches.',
+              'Modes de tir : coup par coup / rafale de 3 / rafale libre.',
+            ],
+          },
+          {
+            text: `Remington 870 (BPS) :`,
+            list: [
+              'Type : répétition manuelle (pompe), calibre 12.',
+              'Effet : dispersions de plombs. Dévastateur à courte portée, inutile à longue distance.',
+            ],
+          },
+          {
+            text: `Colt M4A1 (Division spéciale / agents habilités) :`,
+            list: [
+              'Accès : réservé Division spéciale (SWAT/ERT/HRT) et agents habilités par leur hiérarchie.',
+              'Calibre : 5.56mm OTAN.',
+              'Portée : pratique jusqu’à 600 m.',
+              'Puissance : capable de percer les gilets pare‑balles standards.',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: '5',
+    title: 'Formation 05 — Procédures d’interpellation',
+    subtitle: 'Du terrain à la mise en cellule',
+    banner: null,
+    sections: [
+      {
+        title: 'Introduction',
+        paragraphs: [
+          {
+            text: `L’interpellation est l’acte juridique le plus encadré du métier de policier.
+            Une erreur de procédure peut entraîner l’annulation d’un dossier (vice de procédure)
+            et la libération d’un criminel.`,
+          },
+          {
+            text: `Cette formation détaille le protocole strict à suivre, du terrain jusqu’à la mise en cellule.`,
+          },
+        ],
+      },
+      {
+        title: 'Phase 1 : Sur le terrain (l’interpellation)',
+        paragraphs: [
+          {
+            text: `Sécurité & effectifs : il est fortement conseillé d’être au moins 2 agents pour procéder
+            à une interpellation.`,
+            list: [
+              'Contact/menottage : un agent procède au contact.',
+              'Couverture (overwatch) : l’autre agent assure la couverture.',
+            ],
+          },
+          {
+            text: `Notification du motif : le suspect doit immédiatement savoir pourquoi vous agissez.`,
+            list: [
+              'Expliquez de façon claire et simple la raison du contrôle ou de l’arrestation.',
+              'Exemple : “Monsieur, je vous interpelle pour excès de vitesse et refus d’obtempérer.”',
+            ],
+          },
+          {
+            text: `Identification : établissez l’identité du suspect dès le début.`,
+            list: [
+              'Vérifiez immédiatement dans le MDT (tablette).',
+              'Objectif : savoir si la personne est fichée, dangereuse ou activement recherchée (mandat).',
+            ],
+          },
+          {
+            text: `Palpation de sécurité : recherche sommaire d’objets dangereux par‑dessus les vêtements.`,
+            list: [
+              'Condition : motivée par un impératif de sécurité (comportement suspect, bosse sous le vêtement…).',
+              'Sexe : réalisée de préférence par un agent du même sexe (si disponible).',
+              'Droit : pas de consultation du contenu des poches à ce stade, sauf flagrant délit ou danger immédiat.',
+            ],
+          },
+          {
+            text: `Exception DEFCON : en niveau d’alerte DEFCON 1 & 2, la palpation peut être systématique
+            sans justification supplémentaire.`,
+          },
+          {
+            text: `Menottage : le menottage n’est pas automatique.`,
+            list: [
+              'Si le suspect est coopératif et ne présente aucun danger : pas de menottes obligatoires.',
+              'Si le suspect est agité, dangereux ou en état d’arrestation pour crime : menottage de sécurité.',
+            ],
+          },
+          {
+            text: `Droits Miranda (Art 1.3.1) : lecture cruciale pour la validité de la procédure.`,
+            list: [
+              'Quand les lire ? À tout moment de l’arrestation, mais impérativement avant toute question sur les faits.',
+              'Nuance : si vous n’interrogez pas le suspect (flagrant délit évident), la lecture n’est pas systématique immédiatement.',
+              'Vice de procédure : aucun vice tant que le suspect n’a pas été interrogé sans avoir entendu ses droits.',
+            ],
+          },
+          {
+            text: `Transport (code 10‑15) :`,
+            list: [
+              'Position : menotté mains devant (pour éviter la douleur), sauf individu très dangereux.',
+              'Radio : annoncez le départ vers le poste — “Centrale, 10‑15 direction PDP avec X individu(s).”',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Phase 2 : Au poste (protocole post‑interpellation)',
+        paragraphs: [
+          {
+            text: `Fouille intégrale & mise en tenue :`,
+            list: [
+              'Lieu : local MUGSHOT (ou vestiaire sécurisé).',
+              'Sexe : obligatoirement par un agent du même sexe (si possible).',
+              'Action : retrait de tous les objets (dangereux, illégaux, personnels).',
+              'Tenue : le suspect revêt la tenue de détention (orange/bleue) face aux cellules.',
+            ],
+          },
+          {
+            text: `Saisie & inventaire : séparer les biens en deux catégories.`,
+            list: [
+              'Objets illégaux/preuves : saisis définitivement (armes, drogues, outils de vol) — prendre en photo pour le dossier.',
+              'Effets personnels : saisis provisoirement (téléphone, montre, nourriture), rendus à la sortie.',
+              'Note : faites l’inventaire à voix haute avec l’individu pour éviter tout litige.',
+            ],
+          },
+          {
+            text: `Mise en cellule :`,
+            list: [
+              'Incarcérez le suspect.',
+              'Droits vitaux : s’assurer qu’il ait à boire et à manger.',
+              'Verbalisation : moment de rédiger les amendes (factures).',
+            ],
+          },
+          {
+            text: `Rapport d’arrestation (MDT) : obligatoire pour tout crime ou délit majeur.`,
+            list: [
+              'Prendre la photo du suspect (mugshot).',
+              'Remplir la fiche MDT : chefs d’inculpation, preuves (photos des saisies), récit des faits.',
+            ],
+          },
+          {
+            text: `Demande d’avocat & interrogatoire :`,
+            list: [
+              'Conduire le suspect en salle d’interrogatoire.',
+              'Demander s’il veut un avocat.',
+              'Règle des 20 minutes : si l’avocat est demandé, l’appeler. Si personne ne se présente au bout de 20 minutes, poursuivre la procédure.',
+            ],
+          },
+          {
+            text: `Clôture & sortie : à la fin de la garde à vue ou lors du transfert vers la Prison Fédérale,
+            restituer l’intégralité des effets personnels (catégorie 2).`,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: '6',
+    title: 'Formation 06 — Le convoi',
+    subtitle: 'Techniques de déplacement en groupe sécurisé',
+    banner: null,
+    sections: [
+      {
+        title: 'Introduction',
+        paragraphs: [
+          {
+            text: `Cette formation traite des techniques de déplacement en groupe sécurisé. La maîtrise du convoi
+            démontre le professionnalisme des effectifs et réduit drastiquement les risques d’accident (10‑50)
+            lors des transports sensibles.`,
+            image: null,
+          },
+        ],
+      },
+      {
+        title: 'I. Objectifs & principes',
+        paragraphs: [
+          {
+            text: `Le but d’un convoi est de transporter une personne (VIP, prisonnier) ou du matériel d’un point A
+            à un point B en garantissant :`,
+            list: [
+              'Sécurité : empêcher les attaques ou évasions.',
+              'Fluidité : créer une bulle de protection mobile.',
+              'Image : démontrer une discipline militaire et dissuasive.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'II. Le convoi “une voie” (file indienne)',
+        paragraphs: [
+          {
+            text: `Format le plus courant, utilisé principalement pour les routes étroites ou pour se déplacer
+            rapidement et discrètement.`,
+            image: null,
+          },
+          {
+            text: `Caractéristiques :`,
+            list: [
+              'Usage : transport de prisonniers, déplacement rapide.',
+              'Avantage : discret, rapide, n’occupe qu’une seule voie de circulation.',
+              'Autorisation : aucune autorisation spécifique requise en ville.',
+            ],
+          },
+          {
+            text: `Fonctionnement & codes :`,
+            list: [
+              'Véhicule de tête (Lead) : ouvre la route, en CODE 3 (sirènes + girophares).',
+              'Véhicules suivants : en CODE 2 (girophares uniquement) pour limiter les nuisances sonores.',
+              'Véhicule de queue (Tail) : ferme la marche, surveille les arrières et la contre‑filature.',
+            ],
+          },
+          {
+            text: `Positionnement : le VIP ou le prisonnier est toujours placé au centre du convoi.
+            Exemple pour 3 voitures : Police (Lead) – VIP/Suspect – Police (Queue).`,
+          },
+        ],
+      },
+      {
+        title: 'III. Le convoi “en quinconce”',
+        paragraphs: [
+          {
+            text: `Format imposant, occupant la totalité ou une partie importante de la chaussée pour empêcher
+            toute intrusion physique dans le cortège.`,
+            image: null,
+          },
+          {
+            text: `Caractéristiques :`,
+            list: [
+              'Usage : protection de VIP officiel (Gouverneur, Président), défilés. Rarement pour les prisonniers.',
+              'Avantage : protection maximale, impossible de couper le convoi.',
+              'Inconvénient : lent et bloque la circulation.',
+              'Autorisation : nécessite l’accord du Gouvernement ou du Commandement pour être activé en ville.',
+            ],
+          },
+          {
+            text: `Fonctionnement :`,
+            list: [
+              'Codes : tous les véhicules en CODE 3 (sirènes hurlantes) pour imposer le passage.',
+              'Discipline : véhicules en décalé (gauche/droite) pour couvrir la largeur de la route.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'IV. Manœuvres : changement de tête (une voie)',
+        paragraphs: [
+          {
+            text: `Manœuvre utilisée pour remplacer le véhicule de tête (Lead) par le véhicule de queue
+            ou un autre, pour relayer un conducteur fatigué ou réagir à une menace arrière.`,
+          },
+          {
+            text: `Scénario : le véhicule 4 (queue) passe en position 1 (tête).`,
+          },
+          {
+            text: `Déboîtement : le véhicule 4 se rabat sur la voie adjacente (attention au contre‑sens).`,
+            image: null,
+          },
+          {
+            text: `Accélération : le véhicule 4 accélère (prend le lead).`,
+          },
+          {
+            text: `Ralentissement : simultanément, les véhicules 1, 2 et 3 ralentissent légèrement
+            pour faciliter le dépassement.`,
+            image: null,
+          },
+          {
+            text: `Insertion : le véhicule 4 se rabat devant le véhicule 1.`,
+            image: null,
+          },
+          {
+            text: `Switch codes : le véhicule 4 active sa sirène (CODE 3). L’ancien leader (devenu n°2)
+            coupe sa sirène (CODE 2).`,
+          },
+        ],
+      },
+      {
+        title: 'V. Manœuvres : changement de position (quinconce)',
+        paragraphs: [
+          {
+            text: `Dans un convoi en quinconce, le changement de position est plus technique car il faut
+            “ouvrir” la formation.`,
+          },
+          {
+            text: `Scénario : le véhicule 4 remonte le convoi.`,
+          },
+          {
+            text: `Resserrement : le véhicule qui gêne le passage (ex : véhicule 2) se rabat temporairement
+            au centre pour libérer le couloir.`,
+            image: null,
+          },
+          {
+            text: `Passage : le véhicule 4 accélère dans le couloir libéré.`,
+            image: null,
+          },
+          {
+            text: `Reprise : une fois le véhicule 4 passé, le véhicule 2 reprend sa place initiale
+            dans la formation en quinconce.`,
+            image: null,
+          },
+          {
+            text: `Ajustement : le véhicule 4 prend sa nouvelle place en tête ou au milieu selon l’ordre donné.`,
+            image: null,
+          },
+          {
+            text: `Note instructeur : pour valider cette formation, se rendre sur les pistes de l’aéroport
+            de Los Santos (LSIA) ou de Sandy Shores, longues lignes droites et largeur suffisante
+            pour pratiquer sans gêner le trafic civil.`,
+          },
+        ],
+      },
+    ],
+  },
+]
+
+export const totalFormations = formations.length

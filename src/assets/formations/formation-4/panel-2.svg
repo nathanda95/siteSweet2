@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" fill="none">
+  <defs>
+    <linearGradient id="p42" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c1425"/>
+      <stop offset="100%" stop-color="#0f2749"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="360" rx="18" fill="url(#p42)"/>
+  <rect x="30" y="30" width="660" height="300" rx="18" stroke="#4b6cae" stroke-width="2" fill="rgba(255,255,255,0.02)"/>
+  <path d="M130 230h460" stroke="#d7b670" stroke-width="6" stroke-linecap="round" stroke-dasharray="12 12"/>
+  <polygon points="540,210 600,230 540,250" fill="#d7b670"/>
+  <text x="120" y="120" fill="#f2f4f7" font-family="Inter, sans-serif" font-size="22" font-weight="700">Extraction coordonnée</text>
+  <text x="120" y="150" fill="#9fb5d8" font-family="Inter, sans-serif" font-size="15">Alignement de la colonne • Couverture 120°</text>
+</svg>
