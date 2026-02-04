@@ -600,6 +600,12 @@
   justify-content: flex-end;
 }
 
+.section-actions .action-btn[disabled],
+.paragraph-actions .action-btn[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .section-index {
   color: var(--accent-2);
   font-weight: 700;
@@ -636,6 +642,17 @@
 .section-body {
   display: grid;
   gap: 18px;
+}
+
+.paragraph-item {
+  display: grid;
+  gap: 8px;
+}
+
+.paragraph-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
 }
 
 .paragraph-block {

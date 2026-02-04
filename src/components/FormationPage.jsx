@@ -620,11 +620,16 @@ const ParagraphBlock = ({ paragraph, onUpdate, onDelete, canEdit }) => {
 const SectionBlock = ({
   section,
   index,
+  totalSections,
   onUpdateSection,
   onDeleteSection,
   onAddParagraph,
+  onMoveSectionUp,
+  onMoveSectionDown,
   onUpdateParagraph,
   onDeleteParagraph,
+  onMoveParagraphUp,
+  onMoveParagraphDown,
   canEdit,
 }) => {
   const [isEditingTitle, setIsEditingTitle] = useState(false)
@@ -706,6 +711,24 @@ const SectionBlock = ({
               )}
               <button
                 type="button"
+                className="action-btn"
+                onClick={onMoveSectionUp}
+                disabled={index === 0}
+                aria-label="Monter la section"
+              >
+                ↑ Monter
+              </button>
+              <button
+                type="button"
+                className="action-btn"
+                onClick={onMoveSectionDown}
+                disabled={index === totalSections - 1}
+                aria-label="Descendre la section"
+              >
+                ↓ Descendre
+              </button>
+              <button
+                type="button"
                 className="action-btn danger"
                 onClick={onDeleteSection}
               >
@@ -724,13 +747,36 @@ const SectionBlock = ({
       </div>
       <div className="section-body">
         {section.paragraphs.map((paragraph, pIdx) => (
-          <ParagraphBlock
-            key={pIdx}
-            paragraph={paragraph}
-            onUpdate={(nextParagraph) => onUpdateParagraph(pIdx, nextParagraph)}
-            onDelete={() => onDeleteParagraph(pIdx)}
-            canEdit={canEdit}
-          />
+          <div className="paragraph-item" key={pIdx}>
+            {canEdit && (
+              <div className="paragraph-actions">
+                <button
+                  type="button"
+                  className="action-btn icon"
+                  onClick={() => onMoveParagraphUp(pIdx)}
+                  disabled={pIdx === 0}
+                  aria-label="Monter le paragraphe"
+                >
+                  ↑
+                </button>
+                <button
+                  type="button"
+                  className="action-btn icon"
+                  onClick={() => onMoveParagraphDown(pIdx)}
+                  disabled={pIdx === section.paragraphs.length - 1}
+                  aria-label="Descendre le paragraphe"
+                >
+                  ↓
+                </button>
+              </div>
+            )}
+            <ParagraphBlock
+              paragraph={paragraph}
+              onUpdate={(nextParagraph) => onUpdateParagraph(pIdx, nextParagraph)}
+              onDelete={() => onDeleteParagraph(pIdx)}
+              canEdit={canEdit}
+            />
+          </div>
         ))}
       </div>
     </section>
@@ -810,6 +856,52 @@ const FormationPage = ({ formation, onUpdateFormation, onDeleteFormation, canEdi
       ...current,
       sections: current.sections.filter((_, idx) => idx !== sectionIndex),
     }))
+  }
+
+  const moveSection = (fromIndex, toIndex) => {
+    if (!onUpdateFormation || !canEdit) {
+      return
+    }
+    onUpdateFormation((current) => {
+      const sections = [...current.sections]
+      if (
+        fromIndex < 0 ||
+        toIndex < 0 ||
+        fromIndex >= sections.length ||
+        toIndex >= sections.length
+      ) {
+        return current
+      }
+      const [moved] = sections.splice(fromIndex, 1)
+      sections.splice(toIndex, 0, moved)
+      return { ...current, sections }
+    })
+  }
+
+  const moveParagraph = (sectionIndex, fromIndex, toIndex) => {
+    if (!onUpdateFormation || !canEdit) {
+      return
+    }
+    onUpdateFormation((current) => {
+      const sections = current.sections.map((section, idx) => {
+        if (idx !== sectionIndex) {
+          return section
+        }
+        const paragraphs = [...section.paragraphs]
+        if (
+          fromIndex < 0 ||
+          toIndex < 0 ||
+          fromIndex >= paragraphs.length ||
+          toIndex >= paragraphs.length
+        ) {
+          return section
+        }
+        const [moved] = paragraphs.splice(fromIndex, 1)
+        paragraphs.splice(toIndex, 0, moved)
+        return { ...section, paragraphs }
+      })
+      return { ...current, sections }
+    })
   }
 
   const handleParagraphUpdate = (sectionIndex, paragraphIndex, nextParagraph) => {
@@ -945,14 +1037,23 @@ const FormationPage = ({ formation, onUpdateFormation, onDeleteFormation, canEdi
             key={`${section.title}-${idx}`}
             section={section}
             index={idx}
+            totalSections={formation.sections.length}
             onUpdateSection={(nextSection) => handleSectionUpdate(idx, nextSection)}
             onDeleteSection={() => handleSectionDelete(idx)}
             onAddParagraph={() => handleAddParagraph(idx)}
+            onMoveSectionUp={() => moveSection(idx, idx - 1)}
+            onMoveSectionDown={() => moveSection(idx, idx + 1)}
             onUpdateParagraph={(paragraphIndex, nextParagraph) =>
               handleParagraphUpdate(idx, paragraphIndex, nextParagraph)
             }
             onDeleteParagraph={(paragraphIndex) =>
               handleParagraphDelete(idx, paragraphIndex)
+            }
+            onMoveParagraphUp={(paragraphIndex) =>
+              moveParagraph(idx, paragraphIndex, paragraphIndex - 1)
+            }
+            onMoveParagraphDown={(paragraphIndex) =>
+              moveParagraph(idx, paragraphIndex, paragraphIndex + 1)
             }
             canEdit={canEdit}
           />
