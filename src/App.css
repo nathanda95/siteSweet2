@@ -566,6 +566,11 @@
   gap: 20px;
 }
 
+.section-add {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .section {
   background: var(--card);
   border: 1px solid var(--border);
@@ -591,6 +596,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .section-index {
@@ -603,6 +610,27 @@
 .section h2 {
   margin: 0;
   font-size: 20px;
+}
+
+.section-title-editor {
+  display: grid;
+  gap: 8px;
+}
+
+.section-title-editor input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0b1322;
+  color: var(--text);
+  padding: 8px 10px;
+  font-size: 15px;
+}
+
+.section-title-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .section-body {

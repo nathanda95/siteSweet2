@@ -476,24 +476,24 @@ const ParagraphBlock = ({ paragraph, onUpdate, onDelete, canEdit }) => {
                             value={row[colIdx] ?? ''}
                             onChange={(event) => {
                               const value = event.target.value
-                            setDraftTable((current) => ({
-                              headers: current.headers,
-                              rows: current.rows.map((r, rIdx) => {
-                                if (rIdx !== rowIdx) {
-                                  return r
-                                }
-                                const baseRow = Array.from(
-                                  { length: current.headers.length },
-                                  (_, idx) => (Array.isArray(r) ? r[idx] ?? '' : '')
-                                )
-                                baseRow[colIdx] = value
-                                return baseRow
-                              }),
-                            }))
-                          }}
-                          placeholder={`L${rowIdx + 1}C${colIdx + 1}`}
-                        />
-                      ))}
+                              setDraftTable((current) => ({
+                                headers: current.headers,
+                                rows: current.rows.map((r, rIdx) => {
+                                  if (rIdx !== rowIdx) {
+                                    return r
+                                  }
+                                  const baseRow = Array.from(
+                                    { length: current.headers.length },
+                                    (_, idx) => (Array.isArray(r) ? r[idx] ?? '' : '')
+                                  )
+                                  baseRow[colIdx] = value
+                                  return baseRow
+                                }),
+                              }))
+                            }}
+                            placeholder={`L${rowIdx + 1}C${colIdx + 1}`}
+                          />
+                        ))}
                       </div>
                     ))}
                     {draftTable.headers.length > 0 && draftTable.rows.length === 0 && (
@@ -617,6 +617,126 @@ const ParagraphBlock = ({ paragraph, onUpdate, onDelete, canEdit }) => {
   )
 }
 
+const SectionBlock = ({
+  section,
+  index,
+  onUpdateSection,
+  onDeleteSection,
+  onAddParagraph,
+  onUpdateParagraph,
+  onDeleteParagraph,
+  canEdit,
+}) => {
+  const [isEditingTitle, setIsEditingTitle] = useState(false)
+  const [draftTitle, setDraftTitle] = useState(section.title ?? '')
+
+  useEffect(() => {
+    if (!isEditingTitle) {
+      setDraftTitle(section.title ?? '')
+    }
+  }, [section, isEditingTitle])
+
+  useEffect(() => {
+    if (!canEdit && isEditingTitle) {
+      setIsEditingTitle(false)
+    }
+  }, [canEdit, isEditingTitle])
+
+  const handleSaveTitle = () => {
+    if (!onUpdateSection || !canEdit) {
+      setIsEditingTitle(false)
+      return
+    }
+    const nextTitle = draftTitle.trim() || section.title
+    onUpdateSection({ ...section, title: nextTitle })
+    setIsEditingTitle(false)
+  }
+
+  const handleCancelTitle = () => {
+    setDraftTitle(section.title ?? '')
+    setIsEditingTitle(false)
+  }
+
+  return (
+    <section className="section">
+      <div className="section-header">
+        <div className="section-title">
+          <span className="section-index">Section {index + 1}</span>
+          {isEditingTitle ? (
+            <div className="section-title-editor">
+              <input
+                type="text"
+                value={draftTitle}
+                onChange={(event) => setDraftTitle(event.target.value)}
+                placeholder="Titre de la section"
+              />
+              <div className="section-title-actions">
+                <button
+                  type="button"
+                  className="action-btn ghost"
+                  onClick={handleCancelTitle}
+                >
+                  Annuler
+                </button>
+                <button
+                  type="button"
+                  className="action-btn primary"
+                  onClick={handleSaveTitle}
+                >
+                  Enregistrer
+                </button>
+              </div>
+            </div>
+          ) : (
+            <h2>{section.title}</h2>
+          )}
+        </div>
+        <div className="section-actions">
+          {canEdit && (
+            <>
+              {!isEditingTitle && (
+                <button
+                  type="button"
+                  className="action-btn icon edit-btn"
+                  onClick={() => setIsEditingTitle(true)}
+                  aria-label="Modifier la section"
+                >
+                  ✎
+                </button>
+              )}
+              <button
+                type="button"
+                className="action-btn danger"
+                onClick={onDeleteSection}
+              >
+                Supprimer la section
+              </button>
+              <button
+                type="button"
+                className="action-btn add-btn"
+                onClick={onAddParagraph}
+              >
+                + Ajouter un paragraphe
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+      <div className="section-body">
+        {section.paragraphs.map((paragraph, pIdx) => (
+          <ParagraphBlock
+            key={pIdx}
+            paragraph={paragraph}
+            onUpdate={(nextParagraph) => onUpdateParagraph(pIdx, nextParagraph)}
+            onDelete={() => onDeleteParagraph(pIdx)}
+            canEdit={canEdit}
+          />
+        ))}
+      </div>
+    </section>
+  )
+}
+
 const FormationPage = ({ formation, onUpdateFormation, onDeleteFormation, canEdit }) => {
   const hasBanner = Object.prototype.hasOwnProperty.call(formation, 'banner')
   const [isEditingMeta, setIsEditingMeta] = useState(false)
@@ -651,6 +771,44 @@ const FormationPage = ({ formation, onUpdateFormation, onDeleteFormation, canEdi
           paragraphs: [...section.paragraphs, { text: 'Nouveau paragraphe.' }],
         }
       }),
+    }))
+  }
+
+  const handleAddSection = () => {
+    if (!onUpdateFormation || !canEdit) {
+      return
+    }
+    onUpdateFormation((current) => ({
+      ...current,
+      sections: [
+        ...current.sections,
+        {
+          title: 'Nouvelle section',
+          paragraphs: [{ text: 'Nouveau paragraphe.' }],
+        },
+      ],
+    }))
+  }
+
+  const handleSectionUpdate = (sectionIndex, nextSection) => {
+    if (!onUpdateFormation || !canEdit) {
+      return
+    }
+    onUpdateFormation((current) => ({
+      ...current,
+      sections: current.sections.map((section, idx) =>
+        idx === sectionIndex ? nextSection : section
+      ),
+    }))
+  }
+
+  const handleSectionDelete = (sectionIndex) => {
+    if (!onUpdateFormation || !canEdit) {
+      return
+    }
+    onUpdateFormation((current) => ({
+      ...current,
+      sections: current.sections.filter((_, idx) => idx !== sectionIndex),
     }))
   }
 
@@ -775,39 +933,29 @@ const FormationPage = ({ formation, onUpdateFormation, onDeleteFormation, canEdi
       </div>
 
       <div className="formation-content">
+        {canEdit && (
+          <div className="section-add">
+            <button type="button" className="action-btn add-btn" onClick={handleAddSection}>
+              + Ajouter une section
+            </button>
+          </div>
+        )}
         {formation.sections.map((section, idx) => (
-          <section key={section.title} className="section">
-            <div className="section-header">
-              <div className="section-title">
-                <span className="section-index">Section {idx + 1}</span>
-                <h2>{section.title}</h2>
-              </div>
-              <div className="section-actions">
-                {canEdit && (
-                  <button
-                    type="button"
-                    className="action-btn add-btn"
-                    onClick={() => handleAddParagraph(idx)}
-                  >
-                    + Ajouter un paragraphe
-                  </button>
-                )}
-              </div>
-            </div>
-            <div className="section-body">
-              {section.paragraphs.map((paragraph, pIdx) => (
-                <ParagraphBlock
-                  key={pIdx}
-                  paragraph={paragraph}
-                  onUpdate={(nextParagraph) =>
-                    handleParagraphUpdate(idx, pIdx, nextParagraph)
-                  }
-                  onDelete={() => handleParagraphDelete(idx, pIdx)}
-                  canEdit={canEdit}
-                />
-              ))}
-            </div>
-          </section>
+          <SectionBlock
+            key={`${section.title}-${idx}`}
+            section={section}
+            index={idx}
+            onUpdateSection={(nextSection) => handleSectionUpdate(idx, nextSection)}
+            onDeleteSection={() => handleSectionDelete(idx)}
+            onAddParagraph={() => handleAddParagraph(idx)}
+            onUpdateParagraph={(paragraphIndex, nextParagraph) =>
+              handleParagraphUpdate(idx, paragraphIndex, nextParagraph)
+            }
+            onDeleteParagraph={(paragraphIndex) =>
+              handleParagraphDelete(idx, paragraphIndex)
+            }
+            canEdit={canEdit}
+          />
         ))}
       </div>
     </article>
