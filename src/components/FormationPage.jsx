@@ -45,6 +45,16 @@ const ParagraphBlock = ({ paragraph, onUpdate, onDelete, canEdit }) => {
   const [draftImage, setDraftImage] = useState(
     Object.prototype.hasOwnProperty.call(paragraph, 'image') ? paragraph.image : null
   )
+  const [draftListJson, setDraftListJson] = useState(
+    paragraph.list ? JSON.stringify(paragraph.list, null, 2) : ''
+  )
+  const [draftTableJson, setDraftTableJson] = useState(
+    paragraph.table ? JSON.stringify(paragraph.table, null, 2) : ''
+  )
+  const [showListEditor, setShowListEditor] = useState(Boolean(paragraph.list))
+  const [showTableEditor, setShowTableEditor] = useState(Boolean(paragraph.table))
+  const [listError, setListError] = useState('')
+  const [tableError, setTableError] = useState('')
   const fileInputId = useId()
 
   useEffect(() => {
@@ -55,6 +65,12 @@ const ParagraphBlock = ({ paragraph, onUpdate, onDelete, canEdit }) => {
           ? paragraph.image
           : null
       )
+      setDraftListJson(paragraph.list ? JSON.stringify(paragraph.list, null, 2) : '')
+      setDraftTableJson(paragraph.table ? JSON.stringify(paragraph.table, null, 2) : '')
+      setShowListEditor(Boolean(paragraph.list))
+      setShowTableEditor(Boolean(paragraph.table))
+      setListError('')
+      setTableError('')
     }
   }, [paragraph, isEditing])
 
@@ -83,6 +99,56 @@ const ParagraphBlock = ({ paragraph, onUpdate, onDelete, canEdit }) => {
       setIsEditing(false)
       return
     }
+    setListError('')
+    setTableError('')
+    const parsedList = (() => {
+      const trimmed = draftListJson.trim()
+      if (!trimmed) {
+        return { value: undefined, clear: true }
+      }
+      try {
+        const parsed = JSON.parse(trimmed)
+        if (!Array.isArray(parsed)) {
+          setListError('La liste doit être un tableau JSON.')
+          return null
+        }
+        return { value: parsed, clear: false }
+      } catch (error) {
+        setListError('JSON invalide pour la liste.')
+        return null
+      }
+    })()
+
+    const parsedTable = (() => {
+      const trimmed = draftTableJson.trim()
+      if (!trimmed) {
+        return { value: undefined, clear: true }
+      }
+      try {
+        const parsed = JSON.parse(trimmed)
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+          setTableError('Le tableau doit être un objet JSON.')
+          return null
+        }
+        if (!Array.isArray(parsed.headers) || !Array.isArray(parsed.rows)) {
+          setTableError('Le tableau doit contenir "headers" et "rows" en tableaux.')
+          return null
+        }
+        if (!parsed.rows.every((row) => Array.isArray(row))) {
+          setTableError('Chaque ligne de "rows" doit être un tableau.')
+          return null
+        }
+        return { value: parsed, clear: false }
+      } catch (error) {
+        setTableError('JSON invalide pour le tableau.')
+        return null
+      }
+    })()
+
+    if (parsedList === null || parsedTable === null) {
+      return
+    }
+
     const nextParagraph = { ...paragraph }
     const trimmedText = draftText.trim()
     if (trimmedText) {
@@ -95,6 +161,20 @@ const ParagraphBlock = ({ paragraph, onUpdate, onDelete, canEdit }) => {
     } else if (Object.prototype.hasOwnProperty.call(nextParagraph, 'image')) {
       nextParagraph.image = null
     }
+    if (showListEditor) {
+      if (parsedList?.clear) {
+        delete nextParagraph.list
+      } else if (parsedList?.value) {
+        nextParagraph.list = parsedList.value
+      }
+    }
+    if (showTableEditor) {
+      if (parsedTable?.clear) {
+        delete nextParagraph.table
+      } else if (parsedTable?.value) {
+        nextParagraph.table = parsedTable.value
+      }
+    }
     onUpdate(nextParagraph)
     setIsEditing(false)
   }
@@ -104,6 +184,12 @@ const ParagraphBlock = ({ paragraph, onUpdate, onDelete, canEdit }) => {
     setDraftImage(
       Object.prototype.hasOwnProperty.call(paragraph, 'image') ? paragraph.image : null
     )
+    setDraftListJson(paragraph.list ? JSON.stringify(paragraph.list, null, 2) : '')
+    setDraftTableJson(paragraph.table ? JSON.stringify(paragraph.table, null, 2) : '')
+    setShowListEditor(Boolean(paragraph.list))
+    setShowTableEditor(Boolean(paragraph.table))
+    setListError('')
+    setTableError('')
     setIsEditing(false)
   }
 
@@ -161,6 +247,67 @@ const ParagraphBlock = ({ paragraph, onUpdate, onDelete, canEdit }) => {
               onChange={(event) => setDraftText(event.target.value)}
               placeholder="Saisir le contenu du paragraphe..."
             />
+            <div className="json-editor">
+              <div className="json-header">
+                <span>Données JSON</span>
+                <div className="json-actions">
+                  {!showListEditor && (
+                    <button
+                      type="button"
+                      className="action-btn ghost"
+                      onClick={() => {
+                        setShowListEditor(true)
+                        setDraftListJson('[]')
+                        setListError('')
+                      }}
+                    >
+                      + Liste
+                    </button>
+                  )}
+                  {!showTableEditor && (
+                    <button
+                      type="button"
+                      className="action-btn ghost"
+                      onClick={() => {
+                        setShowTableEditor(true)
+                        setDraftTableJson('{\n  \"headers\": [],\n  \"rows\": []\n}')
+                        setTableError('')
+                      }}
+                    >
+                      + Tableau
+                    </button>
+                  )}
+                </div>
+              </div>
+              {showListEditor && (
+                <label className="json-field">
+                  <span>Liste (JSON)</span>
+                  <textarea
+                    value={draftListJson}
+                    onChange={(event) => {
+                      setDraftListJson(event.target.value)
+                      setListError('')
+                    }}
+                    placeholder='["Élément 1", {"code": "A", "label": "Détail"}]'
+                  />
+                </label>
+              )}
+              {listError && <p className="editor-error">{listError}</p>}
+              {showTableEditor && (
+                <label className="json-field">
+                  <span>Tableau (JSON)</span>
+                  <textarea
+                    value={draftTableJson}
+                    onChange={(event) => {
+                      setDraftTableJson(event.target.value)
+                      setTableError('')
+                    }}
+                    placeholder='{"headers": ["Col 1"], "rows": [["Valeur"]]}'
+                  />
+                </label>
+              )}
+              {tableError && <p className="editor-error">{tableError}</p>}
+            </div>
             <div className="editor-actions">
               <label className="action-btn file-btn" htmlFor={fileInputId}>
                 + Ajouter une image

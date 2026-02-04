@@ -638,6 +638,46 @@
   margin-bottom: 8px;
 }
 
+.json-editor {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #0b1424;
+  padding: 10px 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.json-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.json-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.json-field {
+  display: grid;
+  gap: 6px;
+  color: var(--text-soft);
+  font-size: 13px;
+}
+
+.editor-error {
+  margin: 0;
+  color: #f08a8a;
+  font-size: 13px;
+}
+
 .paragraph-editor textarea {
   width: 100%;
   min-height: 120px;
