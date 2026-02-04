@@ -257,7 +257,7 @@ function App() {
     let mounted = true
     const loadFormations = async () => {
       try {
-        const response = await fetch('/api/formations')
+        const response = await fetch('https://api-formation-bcso.nathanda95.fr/formations')
         if (!response.ok) {
           return
         }
@@ -288,7 +288,7 @@ function App() {
     let active = true
     const verifySession = async () => {
       try {
-        const response = await fetch('/api/session', {
+        const response = await fetch('https://api-formation-bcso.nathanda95.fr/session', {
           headers: { Authorization: `Bearer ${authToken}` },
         })
         if (!active) {
@@ -319,7 +319,7 @@ function App() {
       return
     }
     try {
-      const response = await fetch('/api/formations', {
+      const response = await fetch('https://api-formation-bcso.nathanda95.fr/formations', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -400,7 +400,7 @@ function App() {
       return false
     }
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('https://api-formation-bcso.nathanda95.fr/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
@@ -424,7 +424,7 @@ function App() {
   const handleLogout = async () => {
     if (authToken) {
       try {
-        await fetch('/api/logout', {
+        await fetch('https://api-formation-bcso.nathanda95.fr/logout', {
           method: 'POST',
           headers: { Authorization: `Bearer ${authToken}` },
         })
