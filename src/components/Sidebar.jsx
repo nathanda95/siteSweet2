@@ -1,11 +1,34 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
-const Sidebar = ({ formations, currentId }) => {
+const Sidebar = ({ formations, currentId, onAddFormation, canEdit }) => {
+  const navigate = useNavigate()
+  const handleAddFormation = () => {
+    if (!onAddFormation || !canEdit) {
+      return
+    }
+    const newId = onAddFormation()
+    if (newId) {
+      navigate(`/formation/${newId}`)
+    }
+  }
+
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <p className="eyebrow">Sommaire</p>
-        <h3>Formations</h3>
+        <div>
+          <p className="eyebrow">Sommaire</p>
+          <h3>Formations</h3>
+        </div>
+        {canEdit && (
+          <button
+            type="button"
+            className="action-btn icon add-btn"
+            onClick={handleAddFormation}
+            aria-label="Ajouter une formation"
+          >
+            +
+          </button>
+        )}
       </div>
       <div className="sidebar-list">
         {formations.map((formation) => {
