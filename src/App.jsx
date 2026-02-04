@@ -16,6 +16,9 @@ import FormationCard from './components/FormationCard'
 import FormationPage from './components/FormationPage'
 import Pager from './components/Pager'
 
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '')
+const apiUrl = (path) => `${API_BASE}${path}`
+
 const stripImages = (list) =>
   list.map((formation) => ({
     ...formation,
@@ -257,7 +260,7 @@ function App() {
     let mounted = true
     const loadFormations = async () => {
       try {
-        const response = await fetch('https://api-formation-bcso.nathanda95.fr/formations')
+        const response = await fetch(apiUrl('/formations'))
         if (!response.ok) {
           return
         }
@@ -288,7 +291,7 @@ function App() {
     let active = true
     const verifySession = async () => {
       try {
-        const response = await fetch('https://api-formation-bcso.nathanda95.fr/session', {
+        const response = await fetch(apiUrl('/session'), {
           headers: { Authorization: `Bearer ${authToken}` },
         })
         if (!active) {
@@ -319,7 +322,7 @@ function App() {
       return
     }
     try {
-      const response = await fetch('https://api-formation-bcso.nathanda95.fr/formations', {
+      const response = await fetch(apiUrl('/formations'), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -400,7 +403,7 @@ function App() {
       return false
     }
     try {
-      const response = await fetch('https://api-formation-bcso.nathanda95.fr/login', {
+      const response = await fetch(apiUrl('/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
@@ -424,7 +427,7 @@ function App() {
   const handleLogout = async () => {
     if (authToken) {
       try {
-        await fetch('https://api-formation-bcso.nathanda95.fr/logout', {
+        await fetch(apiUrl('/logout'), {
           method: 'POST',
           headers: { Authorization: `Bearer ${authToken}` },
         })

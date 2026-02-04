@@ -77,7 +77,7 @@ const requireAuth = (req, res, next) => {
   return next()
 }
 
-app.get('https://api-formation-bcso.nathanda95.fr/formations', async (req, res) => {
+app.get('/formations', async (req, res) => {
   try {
     const formations = await loadFormations()
     return res.json(formations)
@@ -86,7 +86,7 @@ app.get('https://api-formation-bcso.nathanda95.fr/formations', async (req, res) 
   }
 })
 
-app.put('https://api-formation-bcso.nathanda95.fr/formations', requireAuth, async (req, res) => {
+app.put('/formations', requireAuth, async (req, res) => {
   const payload = req.body
   if (!Array.isArray(payload)) {
     return res.status(400).json({ error: 'Le payload doit être un tableau.' })
@@ -101,15 +101,15 @@ app.put('https://api-formation-bcso.nathanda95.fr/formations', requireAuth, asyn
   }
 })
 
-app.get('https://api-formation-bcso.nathanda95.fr/health', (req, res) => {
+app.get('/health', (req, res) => {
   res.json({ ok: true })
 })
 
-app.get('https://api-formation-bcso.nathanda95.fr/session', requireAuth, (req, res) => {
+app.get('/session', requireAuth, (req, res) => {
   res.json({ ok: true })
 })
 
-app.post('https://api-formation-bcso.nathanda95.fr/login', (req, res) => {
+app.post('/login', (req, res) => {
   const { password } = req.body ?? {}
   if (!password || password !== ADMIN_PASSWORD) {
     return res.status(401).json({ error: 'Identifiants invalides.' })
@@ -119,7 +119,7 @@ app.post('https://api-formation-bcso.nathanda95.fr/login', (req, res) => {
   return res.json({ ok: true, token })
 })
 
-app.post('https://api-formation-bcso.nathanda95.fr/logout', requireAuth, (req, res) => {
+app.post('/logout', requireAuth, (req, res) => {
   if (req.token) {
     sessions.delete(req.token)
   }
